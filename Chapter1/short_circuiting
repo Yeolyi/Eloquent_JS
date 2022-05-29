@@ -1,0 +1,12 @@
+// We can use this functionality as a way to fall back on a defualt value.
+console.log(null || "user");
+console.log("Agnes" || "user");
+
+console.log(0 || 1);
+console.log("" || "!?");
+
+console.log(0 && -1);
+console.log("Hello" && null);
+console.log("Hello" && undefined);
+console.log("Hello" && 0);
+

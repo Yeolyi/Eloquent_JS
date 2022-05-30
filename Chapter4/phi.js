@@ -1,4 +1,4 @@
-require("./04_data/code/journal.js");
+require("./data/journal.js");
 
 // phi coeffieient도 알아보기
 function phi(table) {

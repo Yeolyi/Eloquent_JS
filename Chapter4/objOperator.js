@@ -13,7 +13,7 @@ console.log("wolf" in day1);
 delete day1.wolf;
 console.log("wolf" in day1);
 
-console.log(Object.keys(day1)); // 객체 내 메소드가 아님에 주의
+console.log(Object.keys(day1)); // 객체 내 메소드가 아님에 주의. 근데 왜?
 
 console.log(day1);
 Object.assign(day1, {cat: true});

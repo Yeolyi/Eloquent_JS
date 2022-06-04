@@ -1,0 +1,5 @@
+https://www.lesstif.com/javascript/npm-install-module-33489373.html
+
+npm install 명령어를 사용하니 현재 폴더에 모듈이 설치됨.
+-g 옵션을 주면 global로 설치되는 듯.
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <p>one</p>
+        <p>two</p>
+        <p>three</p>
+        <button onclick='
+            let paragraphs = document.body.getElementsByTagName("p");
+            document.body.insertBefore(paragraphs[2], paragraphs[0]);
+        '>Insert</button>
+        <button onclick='
+            let p = document.body.getElementsByTagName(
+                "p");
+            const newText = document.createTextNode("Replaces");
+            document.body.replaceChild(newText, p[0])
+        '>Replace</button>;
+    </body>
+</html>

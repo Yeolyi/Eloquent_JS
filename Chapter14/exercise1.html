@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="mountains"></div>
+
+    <script>
+        const MOUNTAINS = [
+            { name: "Kilimanjaro", height: 5895, place: "Tanzania" },
+            { name: "Everest", height: 8848, place: "Nepal" },
+            { name: "Mount Fuji", height: 3776, place: "Japan" },
+            { name: "Vaalserberg", height: 323, place: "Netherlands" },
+            { name: "Denali", height: 6168, place: "United States" },
+            { name: "Popocatepetl", height: 5465, place: "Mexico" },
+            { name: "Mont Blanc", height: 4808, place: "Italy/France" }
+        ];
+        const mountains = document.getElementById("mountains");
+        const table = document.createElement("table");
+        mountains.appendChild(table);
+        
+        const header = document.createElement("tr");
+        const keys = Object.keys(MOUNTAINS[0])
+        keys.forEach(key => {
+            const th = document.createElement("th");
+            th.textContent = key; // 정확한 사용법 알아보기, or document.createTextNode
+            header.appendChild(th);
+        });
+        table.appendChild(header);
+
+        for (let content of MOUNTAINS) {
+            const header = document.createElement("tr");
+            for (let key of keys) {
+                const value = content[key];
+                const th = document.createElement("th");
+                th.textContent = value; // 정확한 사용법 알아보기
+                if (typeof value === "number")
+                    th.style.textAlign = "right";
+                header.appendChild(th);
+            }
+            table.appendChild(header);
+        }
+    </script>
+</body>
+
+</html>

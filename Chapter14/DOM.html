@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>안녕하세요</h1>
+        <p>테스트</p>
+        <script>
+            // The global binding 'document' gives access to DOM.
+            // Its documentElement property refers to the object representing the <html> tag.
+            console.log(document.documentElement); // root of tree
+            console.log(document.head);
+            console.log(document.body); // 왜 null? https://stackoverflow.com/questions/9916747/why-is-document-body-null-in-my-javascript
+            console.log(document.body.childNodes);
+    
+            console.log(document.head.nodeType);
+            console.log(Node.ELEMENT_NODE);
+            console.log(Node.TEXT_NODE);
+            console.log(Node.COMMENT_NODE);
+        </script>
+    </body>
+</html>
+
+<!--
+            // script 태그 내에서 실행하니 script 부분도 TEXT_NODE로 인식됨.
+            // 브라우저에서 따로 실행해야 작동.
+            function talksAbout(node, string) {
+                if (node.nodeType == Node.ELEMENT_NODE) {
+                    for (let child of node.childNodes) {
+                        if (talksAbout(child, string)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                } else if (node.nodeType == Node.TEXT_NODE) {
+                    return node.nodeValue.indexOf(string) > -1;
+                } 
+            }
+    
+            console.log(talksAbout(document.body, "Hello"));
+-->

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+       <p style="text-align: center; position: relative;">고양이</p>
+
+       <script>
+           let text = document.querySelector("p");
+           let angle = Math.PI / 2;
+           function animate(time, lastTime) {
+                if (lastTime != null)
+                    angle += (time - lastTime) * 0.002; // 클로저?? 이 변수는 어떻게 포함되는거지
+                text.style.top = 200+(Math.sin(angle)*200) + "px";
+                text.style.left = (Math.cos(angle)*200) + "px"; 
+                requestAnimationFrame(newTime => animate(newTime, time));
+           }
+           // Schedule the animate function 
+           // to run whenever the browser is ready to repaint the screen.
+           requestAnimationFrame(animate);
+       </script>
+    </body>
+</html>

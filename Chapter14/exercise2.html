@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h1>Heading with a <span>span</span> element.</h1>
+    <p>A paragraph with <span>one</span>, <span>two</span>
+        spans.</p>
+
+    <script>
+        function byTagName(node, tagName) {
+            let arr = [];
+            if (node.nodeName.toUpperCase() === tagName.toUpperCase()) arr.push(node);
+            for (let child of node.childNodes) // 이렇게도 순회 되는데 책에서는 왜 안된다고 하지?
+                arr.push(...byTagName(child, tagName))
+            return arr;
+        }
+
+        console.log(byTagName(document.body, "h1").length);
+        // → 1
+        console.log(byTagName(document.body, "span").length);
+        // → 3
+        let para = document.querySelector("p");
+        console.log(byTagName(para, "span").length);
+        // → 2
+    </script>
+</body>
+
+</html>

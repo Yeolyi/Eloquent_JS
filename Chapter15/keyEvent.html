@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <p>This page turns violet when you hold the V key.</p>
+        <script>
+            document.querySelector("p").style.color = "violet";
+            window.addEventListener("keydown", event => {
+                console.log("DOWN"); // 계속 불리고 있음에 주의
+                if (event.key === "v") 
+                    document.body.style.background = "violet";
+                document.querySelector("p").style.color = "white";
+            });
+            window.addEventListener("keyup", event => {
+                if (event.key === "v") 
+                    document.body.style.background = "";
+                    document.querySelector("p").style.color = "violet";
+            });
+        </script>
+    </body>
+</html>

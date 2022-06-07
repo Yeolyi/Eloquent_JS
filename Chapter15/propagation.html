@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <button id="a">Click me</button>
+        <script>
+            const button = document.getElementById("a");
+            button.addEventListener("click", event => {
+                console.log("Button clicked");
+                event.stopPropagation();
+            });
+            document.addEventListener("click", () => {
+                console.log("Propagated");
+            });
+        </script>
+    </body>
+</html>

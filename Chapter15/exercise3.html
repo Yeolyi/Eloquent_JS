@@ -4,29 +4,36 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <style>
-            div {
-                width: 10px; 
-                height: 10px;
-                background-color: aquamarine;
-                position: absolute;
-                border-radius: 5px;
+        <tab-panel>
+            <div data-tabname="one">Tab one</div>
+            <div data-tabname="two">Tab two</div>
+            <div data-tabname="three">Tab three</div>
+          </tab-panel>
+          <script>
+            function asTabs(node) {
+              let childArr = Array.from(node.childNodes)
+                .filter(node => node.nodeName === "DIV")
+              childArr.forEach(node => node.hidden = true);
+              
+              childArr[0].hidden = false;
+
+              let datas = childArr
+                  .map(node => node.dataset.tabname);
+              for (let data of datas) {
+                const button = document.createElement("button");
+                button.addEventListener("click", event => {
+                  for (let node of childArr) {
+                    if (node.dataset.tabname === data) 
+                      node.hidden = false;
+                    else 
+                      node.hidden = true;
+                  }
+                })
+                button.textContent = data;
+                document.body.insertBefore(button, node);
+              }
             }
-        </style>
-        <script>
-            // https://stackoverflow.com/questions/6893273/what-happens-if-you-declare-an-array-without-new-in-javascript
-            let blocks = new Array(10).fill().map(() => document.createElement("div"));
-            blocks.forEach(node => { document.body.appendChild(node) });
-
-            let idx = 0;
-            document.addEventListener("mousemove", (event) => {
-                    console.log(idx);
-                    blocks[idx].style.left = event.pageX + "px";
-                    blocks[idx].style.top = event.pageY + "px";
-                    idx = (idx+1)%10;
-                    schedueled = false;
-            });
-
-        </script>
+            asTabs(document.querySelector("tab-panel"));
+          </script>
     </body>
 </html>
